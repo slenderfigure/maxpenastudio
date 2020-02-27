@@ -1,0 +1,16 @@
+RewriteEngine on
+
+# Eliminate file extensions:
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L]
+
+
+# Eliminate variables from the URL:
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^login/([a-z]) login?login=$1 [NC,L]
+
+ErrorDocument 404 /maxpenastudio/not_found.php
